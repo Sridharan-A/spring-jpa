@@ -32,8 +32,8 @@ public class StudentServiceTest {
 
     @Test
     public void testGetAnotherOne(){
-        Student s1=studentService.getOne(BigInteger.valueOf(2));
-        assertNotNull(s1);
+        Student s2=studentService.getOne(BigInteger.valueOf(2));
+        assertNotNull(s2);
     }
 
     @Test

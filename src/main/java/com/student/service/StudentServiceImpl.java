@@ -24,6 +24,11 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public Student getOne(String name) {
+        return studentRepository.findByName(name);
+    }
+
+    @Override
     public Collection<Student> getAll() {
         return studentRepository.findAll();
     }
