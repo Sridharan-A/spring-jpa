@@ -1,50 +1,45 @@
 package com.student.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
 @Entity
 @Table(name = "STUDENT")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Student implements Serializable {
+public class Student {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private BigInteger id;
+    @NotNull
     @Column(name = "NAME")
     private String name;
     @Column(name = "DEPARTMENT")
     private String dept;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID",referencedColumnName = "STUDENTID")
-    Course course;
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity = Games.class)
+//    @JoinColumn(name = "STUDENTID", referencedColumnName = "ID")
+//    List<Games> games;
+//
+//    public List<Games> getGames() {
+//        return games;
+//    }
+//
+//    public void setGames(List<Games> games) {
+//        this.games = games;
+//    }
 
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "STUDENTID", referencedColumnName = "ID")
-    List<Games> games;
-
-    public List<Games> getGames() {
-        return games;
-    }
-
-    public void setGames(List<Games> games) {
-        this.games = games;
-    }
-    
     public Student() {
+    }
+
+    public Student(BigInteger id, String name, String dept) {
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
     }
 
     public BigInteger getId() {
@@ -72,6 +67,14 @@ public class Student implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dept='" + dept + '\'' +
+                '}';
+    }
 }
 
 /*  ONE TO ONE WITH COURSE TABLE
@@ -91,6 +94,11 @@ public class Student implements Serializable {
 
 
     /*  ONE TO MANY WITH GAMES TABLE
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "STUDENTID", referencedColumnName = "ID")
+    List<Games> games;
+
     public List<Games> getGames() {
         return games;
     }
@@ -98,9 +106,5 @@ public class Student implements Serializable {
     public void setGames(List<Games> games) {
         this.games = games;
     }
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "STUDENTID", referencedColumnName = "ID")
-    List<Games> games;
 
      */

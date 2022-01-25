@@ -15,9 +15,6 @@ public class Course {
     @Column(name = "STUDENTID")
     private BigInteger studentId;
 
-//    @OneToOne(mappedBy = "course")
-//    private Student student;
-
     public int getCourseId() {
         return courseId;
     }

@@ -1,0 +1,71 @@
+@startuml
+
+class BaseEntiy
+{
+ZonedDateTime createdAt
+ZonedDateTime modifiedAt
+ZonedDateTime deletedAt
+}
+class ServiceDefinitionEntity extends BaseEntiy{
+ServiceDefinitionEntityId key
+ServiceType type
+String branchId
+ServiceDefinitionEntityMetadata metada
+}
+
+ class ServiceDefinitionEntityId{
+ UUID id
+ Integer version
+ }
+
+ enum ServiceType{
+ CLASS, PRODUCT,FACILITY,
+ TRAINER,TANNING,LOCKER,
+ MASSAGE,OTHER
+ }
+ enum ServiceDurationType{
+ DAY,WEEK,MONTH
+ }
+ class ServiceCredit{
+ int count
+ boolean isCarryOver
+ }
+
+ class ServiceDuration{
+ ServiceDurationType serviceDurationType
+ int count
+ boolean hasEndDate
+ int totalNoOfCycles
+ }
+
+ class ServiceDefinitionEntityMetadata{
+ String description
+ List<ServicePlanEntity> plans
+ setIdForNewPlans()
+ }
+
+ class ServicePlanEntity{
+ UUID id
+ String name
+ boolean isRecurring
+ int price
+ ServiceDuration duration
+ ServiceCredit credit
+ }
+
+ ServiceDuration o-right- ServiceDurationType
+
+ ServicePlanEntity o-right-ServiceDuration
+ ServicePlanEntity o-- ServiceCredit
+
+ ServiceDefinitionEntity o-right- ServiceDefinitionEntityId
+ ServiceDefinitionEntity o-left- ServiceType
+ ServiceDefinitionEntity  o-- ServiceDefinitionEntityMetadata
+
+ ServiceDefinitionEntityMetadata o-right- ServicePlanEntity
+
+
+
+
+
+@enduml

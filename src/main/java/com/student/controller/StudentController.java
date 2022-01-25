@@ -2,6 +2,7 @@ package com.student.controller;
 
 import com.student.core.Student;
 import com.student.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,9 @@ import java.util.Collection;
 @CrossOrigin
 public class StudentController {
 
-    @Inject
+    @Autowired
     private StudentService studentService;
+
 
     @GetMapping("/{id}")
     public Student getOne(@PathVariable("id") BigInteger id) {

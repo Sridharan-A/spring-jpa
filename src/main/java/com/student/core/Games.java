@@ -1,11 +1,8 @@
 package com.student.core;
 
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.List;
 
 @Entity
 @Table(name = "GAMES")

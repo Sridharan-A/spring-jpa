@@ -4,16 +4,17 @@ import com.student.core.Student;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.persistence.EntityNotFoundException;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({EntityNotFoundException.class})
+    @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException exception) {
-        ErrorDetails errorDetails = new ErrorDetails("Student not found in that id", exception.getMessage());
+        ErrorDetails errorDetails = new ErrorDetails("Student not found", exception.getMessage());
         return new ResponseEntity(errorDetails, HttpStatus.NOT_FOUND);
     }
 
