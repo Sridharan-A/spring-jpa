@@ -11,6 +11,8 @@ import java.util.Collection;
 public interface StudentService {
     Student getOne(BigInteger id);
 
+    Student getOne(String name);
+
     Collection<Student> getAll();
 
     Collection<Student> getStudentsByDepartment(String dept);
