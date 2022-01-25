@@ -31,6 +31,12 @@ public class StudentServiceTest {
     }
 
     @Test
+    public void testGetAnotherOne(){
+        Student s1=studentService.getOne(BigInteger.valueOf(2));
+        assertNotNull(s1);
+    }
+
+    @Test
     public void testAll(){
         assertNotNull(studentService.getAll());
         studentService.getAll().stream().forEach(a->assertNotNull(a));
@@ -50,5 +56,7 @@ public class StudentServiceTest {
         studentService.updateStudentName(id,name);
         assertEquals(name,studentService.getOne(id).getName());
     }
+
+
 
 }
