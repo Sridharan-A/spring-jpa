@@ -11,10 +11,9 @@ import java.util.List;
 @Table(name = "STUDENT")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Student {
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private BigInteger id;
+    private int id;
     @NotNull
     @Column(name = "NAME")
     private String name;
@@ -36,17 +35,17 @@ public class Student {
     public Student() {
     }
 
-    public Student(BigInteger id, String name, String dept) {
+    public Student(int id, String name, String dept) {
         this.id = id;
         this.name = name;
         this.dept = dept;
     }
 
-    public BigInteger getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(int id) {
         this.id = id;
     }
 

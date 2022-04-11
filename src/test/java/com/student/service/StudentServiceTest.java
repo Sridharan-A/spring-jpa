@@ -26,13 +26,13 @@ public class StudentServiceTest {
 
     @Test
     public void testGetOne(){
-        Student s1=studentService.getOne(BigInteger.valueOf(1));
+        Student s1=studentService.getOne(1);
         assertNotNull(s1);
     }
 
     @Test
     public void testGetAnotherOne(){
-        Student s2=studentService.getOne(BigInteger.valueOf(2));
+        Student s2=studentService.getOne(2);
         assertNotNull(s2);
     }
 
@@ -51,7 +51,7 @@ public class StudentServiceTest {
 
     @Test
     public void testUpdateStudentName(){
-        BigInteger id= BigInteger.valueOf(1);
+        int id= 1;
         String name="sridhar";
         studentService.updateStudentName(id,name);
         assertEquals(name,studentService.getOne(id).getName());

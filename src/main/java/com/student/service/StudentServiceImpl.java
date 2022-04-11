@@ -18,7 +18,7 @@ public class StudentServiceImpl implements StudentService{
 
 
     @Override
-    public Student getOne(BigInteger id) {
+    public Student getOne(int id) {
         System.out.println(studentRepository.getById(id));
         return studentRepository.getById(id);
     }
@@ -40,7 +40,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Student addStudent(Student student) {
-        if(student.getId() !=null ){
+        if(student.getId() >=0 ){
             throw new InvalidInputException("Id should not be present for new user");
         } else if (student.getName() == null){
             throw new InvalidInputException("Name is null");
@@ -52,16 +52,16 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void removeStudent(BigInteger id) {
+    public void removeStudent(int id) {
         studentRepository.delete(getOne(id));
     }
 
-    public Student updateStudent(Student student,BigInteger id) {
+    public Student updateStudent(Student student,int id) {
         if(!studentRepository.existsById(id))throw new EntityNotFoundException();
         return studentRepository.save(student);
     }
 
-    public Student updateStudentName(BigInteger id,String name) {
+    public Student updateStudentName(int id,String name) {
         Student student = null;
         if(name != null && name.length()==0)throw new InvalidInputException("Name is null");
         if(!studentRepository.existsById(id))throw new EntityNotFoundException();

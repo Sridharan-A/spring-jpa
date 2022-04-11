@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.math.BigInteger;
 import java.util.Collection;
 
-public interface StudentRepository extends JpaRepository<Student, BigInteger> {
+public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query(value = "SELECT * FROM STUDENT WHERE STUDENT.DEPARTMENT = :dept",nativeQuery=true)
     Collection<Student> getByDept(@Param("dept") String dept);

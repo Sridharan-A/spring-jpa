@@ -1,5 +1,8 @@
 package com.student.controller;
 
+
+
+//Added comments in branch_1
 import com.student.core.Student;
 import com.student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
-import java.math.BigInteger;
 import java.util.Collection;
 
 @RestController
@@ -21,7 +22,7 @@ public class StudentController {
 
 
     @GetMapping("/{id}")
-    public Student getOne(@PathVariable("id") BigInteger id) {
+    public Student getOne(@PathVariable("id") int id) {
         return studentService.getOne(id);
     }
 
@@ -42,19 +43,19 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Student> removeStudent(@PathVariable("id") BigInteger id) {
+    public ResponseEntity<Student> removeStudent(@PathVariable("id") int id) {
         studentService.removeStudent(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable("id") BigInteger id,@RequestBody Student student) {
+    public ResponseEntity<Student> updateStudent(@PathVariable("id") int id,@RequestBody Student student) {
         studentService.updateStudent(student,id);
         return ResponseEntity.accepted().build();
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Student> updateStudentName(@PathVariable("id") BigInteger id, @RequestParam("name") String name) {
+    public ResponseEntity<Student> updateStudentName(@PathVariable("id") int id, @RequestParam("name") String name) {
         studentService.updateStudentName(id, name);
         return ResponseEntity.accepted().build();
 
