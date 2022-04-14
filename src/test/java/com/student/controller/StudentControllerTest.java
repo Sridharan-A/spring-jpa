@@ -23,7 +23,7 @@ public class StudentControllerTest {
 
     @Test
     public void testStudentIdNotNull() throws Exception {
-        Student one = studentController.getOne(BigInteger.valueOf(1));
+        Student one = studentController.getOne(1);
         System.out.println(one);
         Assert.assertNotNull(one);
     }

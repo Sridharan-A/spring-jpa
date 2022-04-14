@@ -1,3 +1,4 @@
+//<<<<<<< Updated upstream
 package com.student.controller;
 
 
@@ -61,3 +62,5 @@ public class StudentController {
 
     }
 }
+//=======
+//>>>>>>> Stashed changes

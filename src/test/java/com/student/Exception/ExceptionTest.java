@@ -7,6 +7,7 @@ import lombok.var;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
@@ -28,7 +29,7 @@ public class ExceptionTest {
 
     @Test
     public void testEntityNotFoundException(){
-        assertThrows(EntityNotFoundException.class, ()->studentService.getOne(BigInteger.valueOf(45346543)));
+        assertThrows(EntityNotFoundException.class, ()->studentService.getOne(298));
 
     }
 }
