@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 
 public interface StudentService {
-    Student getOne(BigInteger id);
+    Student getOne(int id);
 
     Student getOne(String name);
 
@@ -19,9 +19,9 @@ public interface StudentService {
 
     Student addStudent(@RequestBody Student student);
 
-    void removeStudent(BigInteger id);
+    void removeStudent(int id);
 
-    public Student updateStudent(Student student,BigInteger id);
+    public Student updateStudent(Student student,int id);
 
-    public Student updateStudentName(BigInteger id, String name);
+    public Student updateStudentName(int id, String name);
 }
